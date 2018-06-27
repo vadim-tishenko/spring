@@ -11,13 +11,14 @@ import java.util.List;
  * Created by vadim.tishenko
  * on 27.06.2018 21:30.
  */
-public class DataLoadService {
+public class DataLoadService implements QAService {
 
     private String name = "/data/questions.csv";
 
     public DataLoadService(){
     }
 
+    @Override
     public List<QuestionAndAnswer> getQuestions() {
         InputStream in = getClass().getResourceAsStream(name);
         InputStreamReader isr = new InputStreamReader(in);
