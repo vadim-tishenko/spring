@@ -1,4 +1,4 @@
-package ru.cwl.otus.hw01.data;
+package ru.cwl.otus.hw01.model;
 
 /**
  * Created by vadim.tishenko

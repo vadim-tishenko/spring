@@ -4,12 +4,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-    <bean id="loader" class="ru.cwl.otus.hw01.service.DataLoadService">
+    <bean id="loader" class="ru.cwl.otus.hw01.service.CsvLoadService">
         <property name="name" value="/data/questions.csv"/>
     </bean>
 
-    <bean class="ru.cwl.otus.hw01.service.QuizService">
+    <bean id="examFabricService" class="ru.cwl.otus.hw01.service.ExamFabricService">
         <constructor-arg name="loadService" ref="loader"/>
+    </bean>
+
+    <bean class="ru.cwl.otus.hw01.ui.ExamConsoleUI">
+        <constructor-arg name="examFabricService" ref="examFabricService"/>
     </bean>
 </beans>

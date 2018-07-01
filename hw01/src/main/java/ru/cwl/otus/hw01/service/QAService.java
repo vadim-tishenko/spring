@@ -1,6 +1,6 @@
 package ru.cwl.otus.hw01.service;
 
-import ru.cwl.otus.hw01.data.QuestionAndAnswer;
+import ru.cwl.otus.hw01.model.QuestionAndAnswer;
 
 import java.util.List;
 

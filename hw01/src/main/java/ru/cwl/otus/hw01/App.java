@@ -1,7 +1,7 @@
 package ru.cwl.otus.hw01;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.cwl.otus.hw01.service.QuizService;
+import ru.cwl.otus.hw01.ui.ExamConsoleUI;
 
 /**
  * Created by vadim.tishenko
@@ -10,7 +10,7 @@ import ru.cwl.otus.hw01.service.QuizService;
 public class App {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/spring-context.xml");
-        QuizService quiz = ctx.getBean(QuizService.class);
+        ExamConsoleUI quiz = ctx.getBean(ExamConsoleUI.class);
         quiz.start();
     }
 }
