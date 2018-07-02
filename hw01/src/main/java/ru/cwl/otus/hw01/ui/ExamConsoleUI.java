@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 
 public class ExamConsoleUI {
-    private ExamFabricService examFabricService;
+    private final ExamFabricService examFabricService;
 
     public ExamConsoleUI(ExamFabricService examFabricService) {
         this.examFabricService = examFabricService;
@@ -25,16 +25,16 @@ public class ExamConsoleUI {
 
     public void start(Exam exam) {
 
-        Scanner user_input = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
 
         System.out.print("введите фамилию:");
-        String surname = user_input.next();
+        String surname = userInput.next();
         System.out.print("введите имя:");
-        String name = user_input.next();
+        String name = userInput.next();
 
         for (QuestionAndAnswer qa : exam.getQA()) {
             System.out.printf("вопрос: %s\nответ:", qa.getQuestion());
-            String answer = user_input.next();
+            String answer = userInput.next();
 
             exam.checkAnswer(qa, answer);
         }
