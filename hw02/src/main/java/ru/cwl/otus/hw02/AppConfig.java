@@ -1,7 +1,9 @@
 package ru.cwl.otus.hw02;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import ru.cwl.otus.hw02.service.CsvLoadService;
 import ru.cwl.otus.hw02.service.ExamFabricService;
 import ru.cwl.otus.hw02.service.QAService;
@@ -14,17 +16,25 @@ import ru.cwl.otus.hw02.ui.ExamConsoleUI;
 @Configuration
 public class AppConfig {
     @Bean
-    QAService geCsvLoadService(){
+    QAService geCsvLoadService() {
         return new CsvLoadService();
     }
 
     @Bean
-    ExamFabricService getExamFabricService(QAService loadService){
+    ExamFabricService getExamFabricService(QAService loadService) {
         return new ExamFabricService(loadService);
     }
 
     @Bean
-    ExamConsoleUI getExamConsoleUI(ExamFabricService examFabricService){
-        return new ExamConsoleUI(examFabricService);
+    ExamConsoleUI getExamConsoleUI(ExamFabricService examFabricService, MessageSource ms) {
+        return new ExamConsoleUI(examFabricService, ms);
+    }
+
+    //@Bean("b1")
+    MessageSource getMS() {
+        ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
+        ms.setBasename("/i18n/exam_console");
+        ms.setDefaultEncoding("ITF-8");
+        return ms;
     }
 }

@@ -1,5 +1,6 @@
 package ru.cwl.otus.hw02.ui;
 
+import org.springframework.context.MessageSource;
 import ru.cwl.otus.hw02.model.Exam;
 import ru.cwl.otus.hw02.model.QuestionAndAnswer;
 import ru.cwl.otus.hw02.service.ExamFabricService;
@@ -13,9 +14,12 @@ import java.util.Scanner;
 
 public class ExamConsoleUI {
     private ExamFabricService examFabricService;
+    MessageSource ms;
 
-    public ExamConsoleUI(ExamFabricService examFabricService) {
+    public ExamConsoleUI(ExamFabricService examFabricService,MessageSource ms) {
         this.examFabricService = examFabricService;
+        this.ms=ms;
+
     }
 
     public void start() {
