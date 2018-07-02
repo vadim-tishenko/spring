@@ -1,5 +1,6 @@
 package ru.cwl.otus.hw01.service;
 
+import org.junit.Before;
 import org.junit.Test;
 import ru.cwl.otus.hw01.model.Exam;
 import ru.cwl.otus.hw01.model.QuestionAndAnswer;
@@ -19,7 +20,8 @@ public class ExamTest {
     private QuestionAndAnswer qa2=new QuestionAndAnswer("Question2","Answer2");
     private Exam exam;
 
-    public ExamTest() {
+    @Before
+    public void init(){
         List<QuestionAndAnswer> list=new ArrayList<>();
         list.add(qa1);
         list.add(qa2);

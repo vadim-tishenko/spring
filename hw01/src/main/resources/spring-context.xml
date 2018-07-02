@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="loader" class="ru.cwl.otus.hw01.service.CsvLoadService">
-        <property name="name" value="/data/questions.csv"/>
+        <constructor-arg name="name" value="/data/questions.csv"/>
     </bean>
 
     <bean id="examFabricService" class="ru.cwl.otus.hw01.service.ExamFabricService">
