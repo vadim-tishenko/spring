@@ -16,13 +16,15 @@ import static org.junit.Assert.*;
  */
 public class ExamTest {
 
-    private QuestionAndAnswer qa1=new QuestionAndAnswer("Question1","Answer1");
-    private QuestionAndAnswer qa2=new QuestionAndAnswer("Question2","Answer2");
+    private QuestionAndAnswer qa1;
+    private QuestionAndAnswer qa2;
     private Exam exam;
 
     @Before
     public void init(){
         List<QuestionAndAnswer> list=new ArrayList<>();
+        qa1=new QuestionAndAnswer("Question1","Answer1");
+        qa2=new QuestionAndAnswer("Question2","Answer2");
         list.add(qa1);
         list.add(qa2);
         exam = new Exam(list,2);
