@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class ExamConsoleUI {
     private final ExamFabricService examFabricService;
     private final MessageSource ms;
-    private final Locale locale;// = Locale.getDefault();/*Locale.ENGLISH*/
+    private final Locale locale;
 
     public ExamConsoleUI(ExamFabricService examFabricService, MessageSource ms, Locale locale) {
         this.examFabricService = examFabricService;

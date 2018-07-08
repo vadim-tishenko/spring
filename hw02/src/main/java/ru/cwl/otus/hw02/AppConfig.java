@@ -38,7 +38,6 @@ public class AppConfig {
 
     @Bean
     ExamConsoleUI getExamConsoleUI(ExamFabricService examFabricService, MessageSource ms, Locale locale) {
-//        Locale locale = Locale.forLanguageTag(env.getProperty("locale"));
         return new ExamConsoleUI(examFabricService, ms, locale);
     }
 
