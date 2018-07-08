@@ -2,6 +2,7 @@ package ru.cwl.otus.hw02;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.env.Environment;
 import ru.cwl.otus.hw02.ui.ExamConsoleUI;
 
 /**

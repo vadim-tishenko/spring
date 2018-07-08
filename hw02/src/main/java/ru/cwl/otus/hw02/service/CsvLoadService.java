@@ -6,6 +6,7 @@ import ru.cwl.otus.hw02.model.QuestionAndAnswer;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by vadim.tishenko
@@ -13,9 +14,10 @@ import java.util.List;
  */
 public class CsvLoadService implements QAService {
 
-    private String name = "/data/questions.csv";
+    private final String name;
 
-    public CsvLoadService(){
+    public CsvLoadService(Locale locale) {
+        name = "/data/questions_" + locale.toLanguageTag() + ".csv";
     }
 
     @Override
@@ -28,9 +30,5 @@ public class CsvLoadService implements QAService {
                         .build().parse();
 
         return beans;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

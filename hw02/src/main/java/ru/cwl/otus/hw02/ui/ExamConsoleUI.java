@@ -5,6 +5,7 @@ import ru.cwl.otus.hw02.model.Exam;
 import ru.cwl.otus.hw02.model.QuestionAndAnswer;
 import ru.cwl.otus.hw02.service.ExamFabricService;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -13,12 +14,14 @@ import java.util.Scanner;
  */
 
 public class ExamConsoleUI {
-    private ExamFabricService examFabricService;
-    MessageSource ms;
+    private final ExamFabricService examFabricService;
+    private final MessageSource ms;
+    private final Locale locale;// = Locale.getDefault();/*Locale.ENGLISH*/
 
-    public ExamConsoleUI(ExamFabricService examFabricService,MessageSource ms) {
+    public ExamConsoleUI(ExamFabricService examFabricService, MessageSource ms, Locale locale) {
         this.examFabricService = examFabricService;
-        this.ms=ms;
+        this.ms = ms;
+        this.locale = locale;
 
     }
 
@@ -29,25 +32,31 @@ public class ExamConsoleUI {
 
     public void start(Exam exam) {
 
-        Scanner user_input = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
 
-        System.out.print("введите фамилию:");
-        String surname = user_input.next();
-        System.out.print("введите имя:");
-        String name = user_input.next();
+        System.out.print(tr("ui.surname"));
+        String surname = userInput.next();
+        System.out.print(tr("ui.name"));
+        String name = userInput.next();
 
         for (QuestionAndAnswer qa : exam.getQA()) {
-            System.out.printf("вопрос: %s\nответ:", qa.getQuestion());
-            String answer = user_input.next();
+            System.out.print(tr("ui.qa", qa.getQuestion()));
+            String answer = userInput.next();
 
             exam.checkAnswer(qa, answer);
         }
 
-        System.out.printf("\nстудент: %s %s\n", surname, name);
-        if(exam.isPassed()){
-            System.out.println("тест пройден\n");
-        }else {
-            System.out.println("тест провален\n");
+        System.out.println();
+        System.out.println(tr("ui.student", surname, name));
+        if (exam.isPassed()) {
+            System.out.println(tr("ui.test_ok"));
+        } else {
+            System.out.println(tr("ui.test_fail"));
         }
+        System.out.println();
+    }
+
+    private String tr(String key, Object... o) {
+        return ms.getMessage(key, o, "key " + key + " don`t translated!", locale);
     }
 }
