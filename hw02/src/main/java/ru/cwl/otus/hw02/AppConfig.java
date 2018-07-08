@@ -27,7 +27,7 @@ public class AppConfig {
     }
 
     @Bean
-    QAService geCsvLoadService(Locale locale) {
+    public QAService geCsvLoadService(Locale locale) {
         return new CsvLoadService(locale);
     }
 
@@ -37,12 +37,12 @@ public class AppConfig {
     }
 
     @Bean
-    ExamConsoleUI getExamConsoleUI(ExamFabricService examFabricService, MessageSource ms, Locale locale) {
+    public ExamConsoleUI getExamConsoleUI(ExamFabricService examFabricService, MessageSource ms, Locale locale) {
         return new ExamConsoleUI(examFabricService, ms, locale);
     }
 
     @Bean
-    MessageSource messageSource() {
+    public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
         ms.setBasename("/i18n/exam_console");
         ms.setDefaultEncoding("UTF-8");
