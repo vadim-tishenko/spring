@@ -1,9 +1,9 @@
 package ru.cwl.otus.hw03;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import ru.cwl.otus.hw03.service.CsvLoadService;
@@ -18,11 +18,13 @@ import java.util.Locale;
  * on 01.07.2018 21:52.
  */
 @Configuration
-@PropertySource("classpath:app.properties")
 public class AppConfig {
+    @Value("${hw03.locale}")
+    private String locale;
+
     @Bean
-    Locale getLocale( Environment env){
-        return Locale.forLanguageTag(env.getProperty("locale"));
+    Locale getLocale() {
+        return Locale.forLanguageTag(locale);
     }
 
     @Bean
