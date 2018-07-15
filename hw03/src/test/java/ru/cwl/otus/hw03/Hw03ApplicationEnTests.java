@@ -23,7 +23,6 @@ public class Hw03ApplicationEnTests {
 
     @Test
     public void testEN() {
-       // CsvLoadService service=new CsvLoadService(Locale.forLanguageTag("EN"));
         List<QuestionAndAnswer> qa = service.getQuestions();
         assertEquals("yes",qa.get(0).getAnswer());
     }
