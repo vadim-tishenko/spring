@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.shell.jline.InteractiveShellApplicationRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.cwl.otus.hw04.model.QuestionAndAnswer;
 import ru.cwl.otus.hw04.service.QAService;
@@ -13,7 +14,10 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest //("hw04.locale=EN")
+@SpringBootTest(properties = {
+        InteractiveShellApplicationRunner.SPRING_SHELL_INTERACTIVE_ENABLED + "=false",
+        "hw04.locale=EN"
+})
 public class Hw03ApplicationEnTests {
 
     @Autowired
@@ -21,8 +25,8 @@ public class Hw03ApplicationEnTests {
 
     @Test
     public void testEN() {
-       // List<QuestionAndAnswer> qa = service.getQuestions();
-       // assertEquals("yes",qa.get(0).getAnswer());
+        List<QuestionAndAnswer> qa = service.getQuestions();
+        assertEquals("yes",qa.get(0).getAnswer());
     }
 
 }
