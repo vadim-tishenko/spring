@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    title:
+    <div th:text="${book.title}"></div>
+
+    authors:
+    <div th:each="author:${book.authors}">
+        <div th:text="${author.name}">name</div>
+    </div>
+
+    tags:
+    <div th:each="tag:${book.tags}">
+        <div th:text="${tag}">name</div>
+    </div>
+
+    comments:
+    <table border="1" >
+        <thead><td>comment</td><td>user</td></thead>
+        <tr th:each="comment:${comments}">
+            <td th:text="${comment.userName}">userName</td>
+            <td th:text="${comment.text}">text</td>
+            <td><a th:href="'/comment/del/'+${comment.id}">del</a></td>
+        </tr>
+    </table>
+
+    <form method="post" action="/comment">
+        <input name="bookId" th:value="${book.id}" hidden>
+        <input name="user">
+        <input name="text">
+        <input type="submit">
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a th:href="@{/PersonList}">Person List</a>
+<table border="1">
+    <thead><td>title</td><td>authors</td><td>tags</td></thead>
+    <tr th:each="book:${books}">
+        <td><a th:href="'/book/'+${book.id}" th:utext="${book.title}">go</a>
+            <a th:href="'/book/edit/'+${book.id}">edit</a>
+        </td>
+        <!--<td th:utext="${book.title}">...</td>-->
+        <td><table>
+            <tr th:each="author:${book.authors}">
+                <td th:utext="${author.name}">...</td>
+            </tr>
+
+        </table></td>
+        <td><table>
+            <tr th:each="tag:${book.tags}">
+                <td th:utext="${tag}">...</td>
+            </tr>
+
+        </table></td>
+
+
+
+
+    </tr>
+</table>
+<table border="1">
+    <form method="post" action="/book">
+        <input name="title" placeholder="title">
+        <input name="authors" placeholder="authors">
+        <input name="tags" placeholder="tags">
+        <input type="submit">
+    </form>
+</table>
+
+</body>
+</html>
